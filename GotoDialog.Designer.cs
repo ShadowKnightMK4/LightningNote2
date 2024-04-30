@@ -31,7 +31,7 @@
             TextBoxSelectLine = new TextBox();
             ButtonGoto = new Button();
             CheckBoxSelectIt = new CheckBox();
-            button1 = new Button();
+            ButtonClose = new Button();
             SuspendLayout();
             // 
             // TextBoxSelectLine
@@ -61,28 +61,30 @@
             CheckBoxSelectIt.TabIndex = 2;
             CheckBoxSelectIt.Text = "Select It";
             CheckBoxSelectIt.UseVisualStyleBackColor = true;
+            CheckBoxSelectIt.CheckedChanged += CheckBoxSelectIt_CheckedChanged;
             // 
-            // button1
+            // ButtonClose
             // 
-            button1.Location = new Point(548, 99);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 34);
-            button1.TabIndex = 3;
-            button1.Text = "Close";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            ButtonClose.Location = new Point(548, 99);
+            ButtonClose.Name = "ButtonClose";
+            ButtonClose.Size = new Size(112, 34);
+            ButtonClose.TabIndex = 3;
+            ButtonClose.Text = "Close";
+            ButtonClose.UseVisualStyleBackColor = true;
+            ButtonClose.Click += ButtonClose_Click;
             // 
             // GotoDialog
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 222);
-            Controls.Add(button1);
+            Controls.Add(ButtonClose);
             Controls.Add(CheckBoxSelectIt);
             Controls.Add(ButtonGoto);
             Controls.Add(TextBoxSelectLine);
             Name = "GotoDialog";
             Text = "Goto A Line...";
+            Load += GotoDialog_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -92,6 +94,6 @@
         private TextBox TextBoxSelectLine;
         private Button ButtonGoto;
         private CheckBox CheckBoxSelectIt;
-        private Button button1;
+        private Button ButtonClose;
     }
 }

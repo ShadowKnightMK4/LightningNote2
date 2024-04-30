@@ -55,6 +55,8 @@
             toolStripMenuItem4 = new ToolStripSeparator();
             selectAllToolStripMenuItem = new ToolStripMenuItem();
             clearSelectionToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem8 = new ToolStripSeparator();
+            flattenToolStripMenuItem = new ToolStripMenuItem();
             exportToolStripMenuItem = new ToolStripMenuItem();
             exportAsANSITextToolStripMenuItem = new ToolStripMenuItem();
             exportAsUnicodeTextToolStripMenuItem = new ToolStripMenuItem();
@@ -65,6 +67,7 @@
             replacementToolStripMenuItem = new ToolStripMenuItem();
             formatToolStripMenuItem = new ToolStripMenuItem();
             fontToolStripMenuItem = new ToolStripMenuItem();
+            chooseFlattenFontToolStripMenuItem = new ToolStripMenuItem();
             visualToolStripMenuItem = new ToolStripMenuItem();
             zoomToolStripMenuItem = new ToolStripMenuItem();
             zoomInToolStripMenuItem = new ToolStripMenuItem();
@@ -75,14 +78,18 @@
             transparentToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             viewGithubForThisProjectToolStripMenuItem = new ToolStripMenuItem();
+            debugMenuToolStripMenuItem = new ToolStripMenuItem();
+            choosePreferredSaveFolderToolStripMenuItem = new ToolStripMenuItem();
+            emptyClipboardToolStripMenuItem = new ToolStripMenuItem();
             RichTextBoxText = new RichTextBox();
+            enableVisualsTopMostToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, exportToolStripMenuItem, huntToolStripMenuItem, formatToolStripMenuItem, visualToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, exportToolStripMenuItem, huntToolStripMenuItem, formatToolStripMenuItem, visualToolStripMenuItem, helpToolStripMenuItem, debugMenuToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 33);
@@ -159,10 +166,12 @@
             autosaveOnShutdownLogoffToolStripMenuItem.Name = "autosaveOnShutdownLogoffToolStripMenuItem";
             autosaveOnShutdownLogoffToolStripMenuItem.Size = new Size(360, 34);
             autosaveOnShutdownLogoffToolStripMenuItem.Text = "Autosave on Shutdown/Logoff";
+            autosaveOnShutdownLogoffToolStripMenuItem.CheckedChanged += autosaveOnShutdownLogoffToolStripMenuItem_CheckedChanged;
+            autosaveOnShutdownLogoffToolStripMenuItem.Click += autosaveOnShutdownLogoffToolStripMenuItem_Click;
             // 
             // editToolStripMenuItem
             // 
-            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { undoToolStripMenuItem, redoToolStripMenuItem, toolStripMenuItem1, cutTextToolStripMenuItem, copyTextToolStripMenuItem, pasteTextToolStripMenuItem, toolStripMenuItem2, cutFormatToolStripMenuItem, copyFormatToolStripMenuItem, pasteFormatToolStripMenuItem, toolStripMenuItem3, gotoLineToolStripMenuItem, toolStripMenuItem4, selectAllToolStripMenuItem, clearSelectionToolStripMenuItem });
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { undoToolStripMenuItem, redoToolStripMenuItem, toolStripMenuItem1, cutTextToolStripMenuItem, copyTextToolStripMenuItem, pasteTextToolStripMenuItem, toolStripMenuItem2, cutFormatToolStripMenuItem, copyFormatToolStripMenuItem, pasteFormatToolStripMenuItem, toolStripMenuItem3, gotoLineToolStripMenuItem, toolStripMenuItem4, selectAllToolStripMenuItem, clearSelectionToolStripMenuItem, toolStripMenuItem8, flattenToolStripMenuItem });
             editToolStripMenuItem.Name = "editToolStripMenuItem";
             editToolStripMenuItem.Size = new Size(58, 29);
             editToolStripMenuItem.Text = "Edit";
@@ -274,6 +283,18 @@
             clearSelectionToolStripMenuItem.Text = "Clear Selection";
             clearSelectionToolStripMenuItem.Click += clearSelectionToolStripMenuItem_Click;
             // 
+            // toolStripMenuItem8
+            // 
+            toolStripMenuItem8.Name = "toolStripMenuItem8";
+            toolStripMenuItem8.Size = new Size(262, 6);
+            // 
+            // flattenToolStripMenuItem
+            // 
+            flattenToolStripMenuItem.Name = "flattenToolStripMenuItem";
+            flattenToolStripMenuItem.Size = new Size(265, 34);
+            flattenToolStripMenuItem.Text = "Flatten Text";
+            flattenToolStripMenuItem.Click += flattenToolStripMenuItem_Click;
+            // 
             // exportToolStripMenuItem
             // 
             exportToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exportAsANSITextToolStripMenuItem, exportAsUnicodeTextToolStripMenuItem });
@@ -334,7 +355,7 @@
             // 
             // formatToolStripMenuItem
             // 
-            formatToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fontToolStripMenuItem });
+            formatToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { fontToolStripMenuItem, chooseFlattenFontToolStripMenuItem });
             formatToolStripMenuItem.Name = "formatToolStripMenuItem";
             formatToolStripMenuItem.Size = new Size(85, 29);
             formatToolStripMenuItem.Text = "Format";
@@ -342,9 +363,16 @@
             // fontToolStripMenuItem
             // 
             fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            fontToolStripMenuItem.Size = new Size(162, 34);
+            fontToolStripMenuItem.Size = new Size(285, 34);
             fontToolStripMenuItem.Text = "Font...";
             fontToolStripMenuItem.Click += fontToolStripMenuItem_Click;
+            // 
+            // chooseFlattenFontToolStripMenuItem
+            // 
+            chooseFlattenFontToolStripMenuItem.Name = "chooseFlattenFontToolStripMenuItem";
+            chooseFlattenFontToolStripMenuItem.Size = new Size(285, 34);
+            chooseFlattenFontToolStripMenuItem.Text = "Choose Flatten Font...";
+            chooseFlattenFontToolStripMenuItem.Click += chooseFlattenFontToolStripMenuItem_Click;
             // 
             // visualToolStripMenuItem
             // 
@@ -433,6 +461,28 @@
             viewGithubForThisProjectToolStripMenuItem.Name = "viewGithubForThisProjectToolStripMenuItem";
             viewGithubForThisProjectToolStripMenuItem.Size = new Size(332, 34);
             viewGithubForThisProjectToolStripMenuItem.Text = "View Github For this Project";
+            viewGithubForThisProjectToolStripMenuItem.Click += viewGithubForThisProjectToolStripMenuItem_Click;
+            // 
+            // debugMenuToolStripMenuItem
+            // 
+            debugMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { choosePreferredSaveFolderToolStripMenuItem, emptyClipboardToolStripMenuItem, enableVisualsTopMostToolStripMenuItem });
+            debugMenuToolStripMenuItem.Name = "debugMenuToolStripMenuItem";
+            debugMenuToolStripMenuItem.Size = new Size(132, 29);
+            debugMenuToolStripMenuItem.Text = "&Debug Menu";
+            // 
+            // choosePreferredSaveFolderToolStripMenuItem
+            // 
+            choosePreferredSaveFolderToolStripMenuItem.Name = "choosePreferredSaveFolderToolStripMenuItem";
+            choosePreferredSaveFolderToolStripMenuItem.Size = new Size(348, 34);
+            choosePreferredSaveFolderToolStripMenuItem.Text = "Choose Preferred Save Folder";
+            choosePreferredSaveFolderToolStripMenuItem.Click += choosePreferredSaveFolderToolStripMenuItem_Click;
+            // 
+            // emptyClipboardToolStripMenuItem
+            // 
+            emptyClipboardToolStripMenuItem.Name = "emptyClipboardToolStripMenuItem";
+            emptyClipboardToolStripMenuItem.Size = new Size(348, 34);
+            emptyClipboardToolStripMenuItem.Text = "Empty Clipboard";
+            emptyClipboardToolStripMenuItem.Click += emptyClipboardToolStripMenuItem_Click;
             // 
             // RichTextBoxText
             // 
@@ -442,7 +492,15 @@
             RichTextBoxText.Size = new Size(800, 417);
             RichTextBoxText.TabIndex = 1;
             RichTextBoxText.Text = "";
+            RichTextBoxText.VScroll += RichTextBoxText_VScroll;
             RichTextBoxText.TextChanged += RichTextBoxText_TextChanged;
+            // 
+            // enableVisualsTopMostToolStripMenuItem
+            // 
+            enableVisualsTopMostToolStripMenuItem.Name = "enableVisualsTopMostToolStripMenuItem";
+            enableVisualsTopMostToolStripMenuItem.Size = new Size(348, 34);
+            enableVisualsTopMostToolStripMenuItem.Text = "Enable Visual's TopMost";
+            enableVisualsTopMostToolStripMenuItem.Click += enableVisualsTopMostToolStripMenuItem_Click;
             // 
             // MainWindow
             // 
@@ -454,7 +512,8 @@
             MainMenuStrip = menuStrip1;
             Name = "MainWindow";
             Text = "LightningPad - {0}{1}";
-            Load += Form1_Load;
+            FormClosed += MainWindow_FormClosed;
+            Load += MainForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -511,5 +570,12 @@
         private ToolStripMenuItem exportAsANSITextToolStripMenuItem;
         private ToolStripMenuItem exportAsUnicodeTextToolStripMenuItem;
         public RichTextBox RichTextBoxText;
+        private ToolStripSeparator toolStripMenuItem8;
+        private ToolStripMenuItem flattenToolStripMenuItem;
+        private ToolStripMenuItem chooseFlattenFontToolStripMenuItem;
+        private ToolStripMenuItem debugMenuToolStripMenuItem;
+        private ToolStripMenuItem choosePreferredSaveFolderToolStripMenuItem;
+        private ToolStripMenuItem emptyClipboardToolStripMenuItem;
+        private ToolStripMenuItem enableVisualsTopMostToolStripMenuItem;
     }
 }

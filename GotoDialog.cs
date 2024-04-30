@@ -22,20 +22,20 @@ namespace LightningNote
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ButtonClose_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void ButtonGoto_Click(object sender, EventArgs e)
         {
             MainWindow own = Owner as MainWindow;
-            if (own != null)
+            if (own is not null)
             {
-                int line=-1;
+                int line = -1;
                 if (int.TryParse(TextBoxSelectLine.Text, out line))
                 {
-                    int charindex=-2;
+                    int charindex = -2;
                     try
                     {
                         charindex = own.RichTextBoxText.GetFirstCharIndexFromLine(line);
@@ -52,6 +52,16 @@ namespace LightningNote
                 }
 
             }
+        }
+
+        private void GotoDialog_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CheckBoxSelectIt_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
